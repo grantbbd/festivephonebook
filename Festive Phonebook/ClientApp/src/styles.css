@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+body {
+  background-color: #FCC201;
+  background-image: url("assets/lights.svg");
+  background-repeat: repeat-x;
+  background-size: 50px;
+}
+
+.card {
+  border-color: #FCC201;
+  background-color: transparent;
+}
+
+.card .card-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: x-large;
+}
+
+.card-body {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.xmas-card-header {
+  background-color: #D41210;
+  font-family: 'Lilita One', cursive;
+  color: #FFFAFA;
+}
+
+.xmas-card-body {
+  background-color: #53AF40;
+}
+
+h2 {
+  font-family: 'Lilita One', cursive;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.xmas-font {
+  font-family: 'Lilita One', cursive;
+}

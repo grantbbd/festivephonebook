@@ -1,0 +1,61 @@
+<h2 *ngIf="phonebookEntries.length == 0 && !searchText">
+  Oh, ho ho no, you have nobody on your list!
+</h2>
+<div class="row">
+  <div class="col">
+    <button
+      class="btn btn-sm btn-dark btn-block p-2 xmas-font m-1"
+      (click)="CreateEntry(false)"
+    >
+      <img src="../../assets/devil.svg" width="40px" class="mr-1" />
+      Add Naughty
+    </button>
+  </div>
+  <div class="col">
+    <button class="btn btn-sm btn-dark btn-block p-2 xmas-font m-1">
+      <img
+        src="../../assets/angel.svg"
+        width="40px"
+        class="mr-1"
+        (click)="CreateEntry(true)"
+      />
+      Add Nice
+    </button>
+  </div>
+</div>
+<p></p>
+<ng-container *ngIf="phonebookEntries.length > 0 || searchText">
+  <div class="row">
+    <div class="col-md-12">
+      <input
+        class="form-control"
+        [(ngModel)]="searchText"
+        (ngModelChange)="Filter()"
+        placeholder="Type here to search..."
+      />
+    </div>
+  </div>
+  <p></p>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="list-group">
+        <a
+          class="list-group-item list-group-item-action"
+          *ngFor="let entry of phonebookEntries"
+          (click)="EditEntry(entry.id)"
+        >
+          <img
+            [src]="
+              entry.kind === 1
+                ? '../../assets/angel.svg'
+                : '../../assets/devil.svg'
+            "
+            style="width: 20px;"
+          />
+          {{ entry.firstName }} {{ entry.surname }}
+          <span class="float-right"> {{ entry.phoneNumber }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</ng-container>

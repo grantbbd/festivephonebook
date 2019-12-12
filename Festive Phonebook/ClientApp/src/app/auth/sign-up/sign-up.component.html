@@ -1,0 +1,44 @@
+<h2>Welcome!</h2>
+<app-errors [errors]="errors"></app-errors>
+<form [formGroup]="signUpForm" (submit)="Submit()">
+  <div class="col-md-12">
+    <input class="form-control mb-1" formControlName="userName" />
+    <input
+      class="form-control mb-1"
+      formControlName="firstName"
+      placeholder="Santa"
+      autocomplete="off"
+    />
+    <input
+      class="form-control mb-1"
+      formControlName="surname"
+      placeholder="Claus"
+      autocomplete="new-password"
+    />
+    <input
+      class="form-control mb-1"
+      formControlName="password"
+      type="password"
+      placeholder="Password"
+      autocomplete="new-password"
+    />
+    <input
+      class="form-control mb-1"
+      formControlName="confirmPassword"
+      type="password"
+      placeholder="Confirm Password"
+      autocomplete="off"
+    />
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <button
+        class="btn btn-warning"
+        type="submit"
+        [disabled]="signUpForm.status === 'INVALID'"
+      >
+        Sign Up
+      </button>
+    </div>
+  </div>
+</form>

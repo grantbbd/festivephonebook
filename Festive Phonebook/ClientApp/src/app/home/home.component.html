@@ -1,0 +1,16 @@
+<app-errors [errors]="errors"></app-errors>
+<div class="col-md-12">
+  <form [formGroup]="userForm" (submit)="Submit()">
+  <div class="input-group">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="Enter your email to sign-up or sign-in."
+      formControlName="userName"
+    />
+    <div class="input-group-append">
+        <button class="btn btn-warning" type="submit" [disabled]="userForm.status === 'INVALID'" >Go</button>
+    </div>
+  </div>
+</form>
+</div>

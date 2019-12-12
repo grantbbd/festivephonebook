@@ -1,0 +1,23 @@
+<app-errors [errors]="errors"></app-errors>
+<form [formGroup]="loginForm" (submit)="Submit()">
+  <div class="col-md-12">
+    <input class="form-control mb-1" formControlName="userName" />
+    <input
+      class="form-control mb-1"
+      formControlName="password"
+      placeholder="Password"
+      type="password"
+    />
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <button
+        class="btn btn-warning"
+        type="submit"
+        [disabled]="loginForm.status === 'INVALID'"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col text-center">
+    <button
+      class="btn btn-dark xmas-font"
+      style="width: 85px;"
+      (click)="isNice = false"
+    >
+      <img
+        [src]="
+          isNice ? '../../assets/devil_outline.svg' : '../../assets/devil.svg'
+        "
+        style="width: 40px;"
+      />
+      Naughty
+    </button>
+  </div>
+  <div class="col text-center">
+    <button
+      class="btn btn-dark xmas-font"
+      style="width: 85px;"
+      (click)="isNice = true"
+    >
+      <img
+        [src]="
+          isNice ? '../../assets/angel.svg' : '../../assets/angel_outline.svg'
+        "
+        style="width: 40px;"
+      />
+      Nice
+    </button>
+  </div>
+</div>
+<p></p>
+<form [formGroup]="entryForm" (submit)="OnSubmit()">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <input
+          class="form-control"
+          formControlName="firstName"
+          placeholder="Name"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          class="form-control"
+          formControlName="surname"
+          placeholder="Surname"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          class="form-control"
+          formControlName="telephoneNumber"
+          placeholder="Number"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <button type="button" class="btn btn-warning m-2" (click)="OnCancel()">
+        Cancel
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger m-2"
+        *ngIf="sharedDataService.id"
+        (click)="DeleteEntry()"
+      >
+        Delete
+      </button>
+      <button
+        type="submit"
+        class="btn btn-warning m-2"
+        [disabled]="entryForm.status === 'INVALID'"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</form>
+<app-errors [errors]="errors"></app-errors>
