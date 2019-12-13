@@ -16,6 +16,7 @@ import { PhonebookComponent } from './phonebook/phonebook.component';
 import { AuthIntercepter } from './auth/auth.interceptor';
 import { PhonebookEntryComponent } from './phonebook-entry/phonebook-entry.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
