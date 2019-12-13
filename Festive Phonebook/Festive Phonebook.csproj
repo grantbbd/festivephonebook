@@ -11,6 +11,7 @@
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <RootNamespace>Festive_Phonebook</RootNamespace>
+    <UserSecretsId>a69bbea2-3109-445d-a62d-382a89649391</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

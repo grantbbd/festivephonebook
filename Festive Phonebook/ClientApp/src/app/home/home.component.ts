@@ -33,10 +33,12 @@ export class HomeComponent {
         this.router.navigateByUrl('/login');
       },
       err => {
-        this.errors.push('A technical error occurred while trying to verify the account.');
         this.userForm.enable();
         this.spinner.hide();
-        this.router.navigateByUrl('/signup');
+        if (err.status === 404) {
+          this.router.navigateByUrl('/signup');
+        }
+        this.errors.push('A technical error occurred while trying to verify the account.');
       }
     );
   }
