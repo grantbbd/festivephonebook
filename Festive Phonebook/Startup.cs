@@ -55,6 +55,11 @@ namespace Festive_Phonebook
 
             services.AddControllersWithViews();
 
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo() { Title = "Festive API", Version = "v1" });
+            });
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -94,6 +99,13 @@ namespace Festive_Phonebook
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
+            app.UseSwagger();
+            app.UseSwaggerUI(x =>
+            {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Festive API v1");
+                
+            });
+
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
@@ -107,6 +119,7 @@ namespace Festive_Phonebook
                     //spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
+            
         }
     }
 }
