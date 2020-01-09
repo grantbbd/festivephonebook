@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Festive_Phonebook_App.Views.WelcomePage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource XmasYellow}" Orientation="Vertical" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" Spacing="0">
+                <Image Source="lights.png" ></Image>
+                <Image Source="lights.png" ></Image>
+                <Image Source="lights.png" ></Image>
+                <Image Source="lights.png" ></Image>
+                <Image Source="lights.png" ></Image>
+                <Image Source="lights.png" ></Image>
+                <Image Source="lights.png" ></Image>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Spacing="0" >
+                <Frame CornerRadius="10" BackgroundColor="{StaticResource XmasRed}">
+                    <StackLayout Orientation="Vertical" Spacing="0" Padding="0">
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Label Text="Naughty 'n Nice Phonebook" 
+                               Style="{StaticResource XmasHeaderLabel}"
+                               HorizontalOptions="StartAndExpand" 
+                               VerticalTextAlignment="Center"></Label>
+                            <Image Source="giftbox.png" WidthRequest="48" HorizontalOptions="End"></Image>
+                        </StackLayout>
+                        <Frame CornerRadius="10" BackgroundColor="{StaticResource XmasGreen}">
+                            <Entry Placeholder="Enter your email to sign-up or sign-in"
+                                   BackgroundColor="White" Keyboard="Email"
+                                   TextColor="Black"
+                                   Text="{Binding EmailAddress}"
+                                   ></Entry>
+                        </Frame>
+                        <Button Text="Go" BackgroundColor="{StaticResource XmasYellow}" Margin="10"></Button>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

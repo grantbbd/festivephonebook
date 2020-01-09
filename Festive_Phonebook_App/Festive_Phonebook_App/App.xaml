@@ -14,6 +14,14 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+            <Color x:Key="XmasYellow">#FCC201</Color>
+            <Color x:Key="XmasRed">#d41310</Color>
+            <Color x:Key="XmasGreen">#53af40</Color>
+            <Style TargetType="Label" x:Key="XmasHeaderLabel">
+                <Setter Property="FontFamily" Value="LilitaOne-Regular.ttf#Lilita-One"/>
+                <Setter Property="TextColor" Value="WhiteSmoke"/>
+                <Setter Property="FontSize" Value="Large"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
     
