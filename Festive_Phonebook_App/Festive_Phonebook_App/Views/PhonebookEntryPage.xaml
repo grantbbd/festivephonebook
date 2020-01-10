@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Festive_Phonebook_App.Views.PhonebookEntryPage"
+             xmlns:converters="clr-namespace:Festive_Phonebook_App.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IntBooleanConverter x:Key="intBool"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" BackgroundColor="{StaticResource XmasYellow}">
+            <Frame CornerRadius="10" BackgroundColor="{StaticResource XmasGreen}" Margin="5">
+                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Button ImageSource="devilfull.png" BackgroundColor="Black" Text="Naughty" TextColor="WhiteSmoke"
+                            IsVisible="{Binding IsNaughty}"
+                            Command="{Binding SetNaughtyCommand}"
+                            FontFamily="LilitaOne-Regular.ttf#Lilita-One"
+                            HorizontalOptions="FillAndExpand">
+                    </Button>
+                        <Button ImageSource="deviloutline.png" BackgroundColor="DarkGray" Text="Naughty" TextColor="WhiteSmoke"
+                                IsVisible="{Binding IsNice}"
+                                Command="{Binding SetNaughtyCommand}"
+                            FontFamily="LilitaOne-Regular.ttf#Lilita-One"
+                            HorizontalOptions="FillAndExpand">
+                        </Button>
+                        <Button ImageSource="angelfull.png" BackgroundColor="Black" Text="Nice" TextColor="WhiteSmoke"
+                                IsVisible="{Binding IsNice}"
+                                Command="{Binding SetNiceCommand}"
+                            FontFamily="LilitaOne-Regular.ttf#Lilita-One"
+                            HorizontalOptions="FillAndExpand">
+                    </Button>
+                        <Button ImageSource="angeloutline.png" BackgroundColor="DarkGray" Text="Nice" TextColor="WhiteSmoke"
+                                IsVisible="{Binding IsNaughty}"
+                                Command="{Binding SetNiceCommand}"
+                            FontFamily="LilitaOne-Regular.ttf#Lilita-One"
+                            HorizontalOptions="FillAndExpand">
+                        </Button>
+                    </StackLayout>
+                <StackLayout Orientation="Vertical">
+                        <Entry Text="{Binding BookEntry.FirstName}" BackgroundColor="White" TextColor="Black" Placeholder="Name"></Entry>
+                        <Entry Text="{Binding BookEntry.Surname}"  BackgroundColor="White" TextColor="Black" Placeholder="Surname"></Entry>
+                        <Entry Text="{Binding BookEntry.PhoneNumber}"  BackgroundColor="White" TextColor="Black" Placeholder="Number"></Entry>
+                </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="Save" Command="{Binding SaveCommand}" BackgroundColor="{StaticResource XmasYellow}"/>
+                        <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="{StaticResource XmasYellow}"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

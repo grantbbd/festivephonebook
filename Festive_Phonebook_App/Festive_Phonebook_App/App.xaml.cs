@@ -3,6 +3,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Festive_Phonebook_App.Services;
 using Festive_Phonebook_App.Views;
+using Flurl.Http;
+using Xamarin.Essentials;
+using System.Threading.Tasks;
 
 namespace Festive_Phonebook_App
 {
@@ -14,7 +17,25 @@ namespace Festive_Phonebook_App
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new WelcomePage();
+            DependencyService.Register<PhonebookServiceImpl>();
+
+         //   FlurlHttp.ConfigureClient("https://0.0.0.0:8899", cli =>
+         //       cli.Settings.HttpClientFactory = new UntrustedCertClientFactory());
+
+            _ = Init();
+        }
+
+        private async Task Init()
+        {
+            string token = await SecureStorage.GetAsync("token");
+
+            //if (string.IsNullOrWhiteSpace(token))
+            //{
+                MainPage = new WelcomePage();
+            //} else
+            //{
+             //   MainPage = new PhonebookPage();
+            //}
         }
 
         protected override void OnStart()
@@ -28,5 +49,6 @@ namespace Festive_Phonebook_App
         protected override void OnResume()
         {
         }
+
     }
 }

@@ -11,13 +11,14 @@ using Xamarin.Forms.Xaml;
 namespace Festive_Phonebook_App.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WelcomePage : ContentPage
+    public partial class PhonebookPage : ContentPage
     {
-        public WelcomePage()
+        public PhonebookPage()
         {
             InitializeComponent();
 
-            BindingContext = new LoginViewModel(Navigation);
+            BindingContext = new PhonebookViewModel(Navigation);
+
         }
     }
 }
