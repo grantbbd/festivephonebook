@@ -29,13 +29,13 @@ namespace Festive_Phonebook_App
         {
             string token = await SecureStorage.GetAsync("token");
 
-            //if (string.IsNullOrWhiteSpace(token))
-            //{
+            if (string.IsNullOrWhiteSpace(token))
+            {
                 MainPage = new WelcomePage();
-            //} else
-            //{
-             //   MainPage = new PhonebookPage();
-            //}
+            } else
+            {
+               MainPage = new PhonebookPage();
+            }
         }
 
         protected override void OnStart()
