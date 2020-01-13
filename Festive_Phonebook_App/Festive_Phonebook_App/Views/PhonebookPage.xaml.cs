@@ -30,5 +30,10 @@ namespace Festive_Phonebook_App.Views
 
             ItemsListView.SelectedItem = null;
         }
+
+        private void SearchEntriesBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ((PhonebookViewModel)BindingContext).FilterList(((SearchBar)sender).Text);
+        }
     }
 }

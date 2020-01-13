@@ -28,7 +28,11 @@
                                 FontFamily="LilitaOne-Regular.ttf#Lilita-One" HorizontalOptions="FillAndExpand"
                                 Command="{Binding AddNiceCommand}"></Button>
                     </StackLayout>
-                    <SearchBar BackgroundColor="WhiteSmoke"></SearchBar>
+                    <SearchBar BackgroundColor="WhiteSmoke"
+                               x:Name="SearchEntriesBar"
+                               TextChanged="SearchEntriesBar_TextChanged"
+                               SearchCommand="{Binding SearchEntriesCommand}"
+                               SearchCommandParameter="{Binding Text, Source={x:Reference SearchEntriesBar}}"></SearchBar>
                     <ListView ItemsSource="{Binding Entries}" 
                               HasUnevenRows="True" 
                               x:Name="ItemsListView"

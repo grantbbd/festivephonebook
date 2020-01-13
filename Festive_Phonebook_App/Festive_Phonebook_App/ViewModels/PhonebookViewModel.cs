@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -22,6 +23,7 @@ namespace Festive_Phonebook_App.ViewModels
         public ICommand AddNaughtyCommand { get; set; }
         public ICommand AddNiceCommand { get; set; }
         public ICommand LogoffCommand { get; set; }
+        public ICommand SearchEntriesCommand { get; set; }
         public bool isRefreshing;
         public bool IsRefreshing
         {
@@ -45,6 +47,27 @@ namespace Festive_Phonebook_App.ViewModels
             {
                 LoadItemsCommand.Execute(null);
             });
+
+            SearchEntriesCommand = new Command<string>((string query) => {
+                FilterList(query);
+            });
+
+        }
+
+        public void FilterList(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                LoadItemsCommand.Execute(null);
+                return;
+            }
+            else
+            {
+                Entries = new ObservableCollection<PhoneBookEntry>(
+                    Entries.Where(x => x.FirstName.ToLowerInvariant().Contains(query.ToLowerInvariant())
+                    || x.Surname.ToLowerInvariant().Contains(query.ToLowerInvariant())));
+                OnPropertyChanged(nameof(Entries));
+            }
         }
 
         async Task ExecuteAddEntryCommand(bool isNice)
