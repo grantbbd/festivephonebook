@@ -12,6 +12,8 @@ namespace Festive_Phonebook_App.Models
         public string PhoneNumber { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
+        public bool IsNice { get { return (Kind == 1); }  }
+        public bool IsNaughty { get { return (Kind == 2); } }
     }
 
 }

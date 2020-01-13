@@ -12,5 +12,7 @@ namespace Festive_Phonebook_App.Services
         Task<string> LoginUser(string email, string password);
         Task<IEnumerable<PhoneBookEntry>> GetEntries(string token);
         Task<bool> CreateEntry(string token, PhoneBookEntry entry);
+        Task<bool> UpdateEntry(string token, PhoneBookEntry entry);
+        Task<bool> DeleteEntry(string token, string id);
     }
 }

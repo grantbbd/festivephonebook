@@ -21,6 +21,13 @@ namespace Festive_Phonebook_App.ViewModels
         public ICommand LoadItemsCommand { get; set; }
         public ICommand AddNaughtyCommand { get; set; }
         public ICommand AddNiceCommand { get; set; }
+        public ICommand LogoffCommand { get; set; }
+        public bool isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return isRefreshing; }
+            set { SetProperty(ref isRefreshing, value);  }
+        }
 
         public PhonebookViewModel(INavigation navigation)
         {
@@ -32,6 +39,7 @@ namespace Festive_Phonebook_App.ViewModels
 
             AddNaughtyCommand = new Command(async () => await ExecuteAddEntryCommand(false));
             AddNiceCommand = new Command(async () => await ExecuteAddEntryCommand(true));
+            LogoffCommand = new Command(() => ExecuteLogoffCommand());
 
             MessagingCenter.Subscribe<PhonebookEntryViewModel, PhoneBookEntry>(this, "EditEntry", async (obj, item) =>
             {
@@ -42,9 +50,15 @@ namespace Festive_Phonebook_App.ViewModels
         async Task ExecuteAddEntryCommand(bool isNice)
         {
             await Navigation.PushModalAsync(new PhonebookEntryPage(new PhoneBookEntry() { 
-                Id = Guid.NewGuid().ToString(),
-                Kind = isNice ? 1 : 0
+                Id = Guid.Empty.ToString(),
+                Kind = isNice ? 1 : 2
             }));
+        }
+
+        void ExecuteLogoffCommand()
+        {
+            SecureStorage.Remove("token");
+            App.Current.MainPage = new WelcomePage();
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -62,10 +76,8 @@ namespace Festive_Phonebook_App.ViewModels
                 var items = await PhonebookService.GetEntries(token);
                 foreach (var item in items)
                 {
-                    Debug.WriteLine(item.FirstName);
                     Entries.Add(item);
                 }
-                
             }
             catch (Exception ex)
             {
@@ -74,6 +86,7 @@ namespace Festive_Phonebook_App.ViewModels
             finally
             {
                 IsBusy = false;
+                IsRefreshing = false;
             }
         }
 

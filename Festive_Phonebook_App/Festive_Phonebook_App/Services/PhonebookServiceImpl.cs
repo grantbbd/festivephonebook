@@ -11,6 +11,15 @@ namespace Festive_Phonebook_App.Services
     public class PhonebookServiceImpl : IPhonebookService
     {
         private string BaseURL { get; set; } = "https://festivephonebook20191212022330.azurewebsites.net/api/";
+        public async Task<bool> UpdateEntry(string token, PhoneBookEntry entry)
+        {
+            var result = await BaseURL
+                    .AppendPathSegment("phonebook/update")
+                    .WithOAuthBearerToken(token)
+                    .PostJsonAsync(entry);
+
+            return result.IsSuccessStatusCode;
+        }
 
         public async Task<bool> CreateEntry(string token, PhoneBookEntry entry)
         {
@@ -49,11 +58,8 @@ namespace Festive_Phonebook_App.Services
             }
         }
 
-        //private string BaseURL { get; set; } = "https://10.8.0.138:8899/api/";
-
         public async Task<bool> UserExists(string email)
         {
-
             try
             {
                 var result = await BaseURL
@@ -62,6 +68,24 @@ namespace Festive_Phonebook_App.Services
 
                 return result.IsSuccessStatusCode;
             } catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteEntry(string token, string id)
+        {
+            try
+            {
+                var result = await BaseURL
+                    .AppendPathSegment("phonebook/delete")
+                    .WithOAuthBearerToken(token)
+                    .SetQueryParam("id", id)
+                    .GetAsync();
+
+                return result.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
             {
                 return false;
             }

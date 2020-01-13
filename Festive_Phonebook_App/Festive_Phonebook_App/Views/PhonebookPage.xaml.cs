@@ -1,4 +1,5 @@
-﻿using Festive_Phonebook_App.ViewModels;
+﻿using Festive_Phonebook_App.Models;
+using Festive_Phonebook_App.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,18 @@ namespace Festive_Phonebook_App.Views
         public PhonebookPage()
         {
             InitializeComponent();
-
             BindingContext = new PhonebookViewModel(Navigation);
+        }
 
+        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            var item = args.SelectedItem as PhoneBookEntry;
+            if (item == null)
+                return;
+
+            await Navigation.PushModalAsync(new PhonebookEntryPage(item));
+
+            ItemsListView.SelectedItem = null;
         }
     }
 }

@@ -49,6 +49,7 @@
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <Button Text="Save" Command="{Binding SaveCommand}" BackgroundColor="{StaticResource XmasYellow}"/>
                         <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="{StaticResource XmasYellow}"/>
+                        <Button Text="Delete" Command="{Binding DeleteCommand}" BackgroundColor="{StaticResource XmasRed}" />
                     </StackLayout>
                 </StackLayout>
             </Frame>
