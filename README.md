@@ -7,5 +7,5 @@ The project uses the following:
 * Front-end : Angular
 * Back-end : .NET Core Web API
 * Database : Azure SQL
-
+* Mobile Application (Android) : Xamarin Forms
 
